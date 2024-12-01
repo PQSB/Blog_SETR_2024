@@ -25,12 +25,19 @@ My implementation is based on a **state machine**, whose possible states depend 
     - COFFEE_READY: This state displays *RETIRE BEBIDA* for 3s.
     
   - Admin states
-    - SHOWING_ADMIN_MENU: This state shows all the v
-    - WATCH_TEMP_HUM,
-    - WATCH_DIST,
-    - WATCH_COUNTER,
-    - CHANGE_PRICES,
-    - CHANGING_PRICE
+    - SHOWING_ADMIN_MENU: This state allows the client to navigate along all the available admin functionalities displaying the current functionality until the client pushes the josytick button to select one.
+  
+    In the following states, the user can go back to the previous state moving the joystick to the left direction.
+    
+    - WATCH_TEMP_HUM: This state displays the temperature and humidity values.
+
+    - WATCH_DIST: This state displays the distance measured by the ultrasonic sensor.
+    
+    - WATCH_COUNTER: This state displays the time passed since the board was turned on in seconds.
+    
+    - CHANGE_PRICES:
+    
+    - CHANGING_PRICE:
 
 ## Interruptions
 I have used hardware interruptions for both buttons because they are **asynchronous** and so, they are the best option to get the required functionality for both buttons. Each interruption has different tasks:
