@@ -46,9 +46,9 @@ I have used hardware interruptions for both buttons because they are **asynchron
   - **Push button:** This interruption is configured in CHANGE so that it runs every time the button changes from HIGH to LOW or from LOW to HIGH. It's the one in charge of updating the execution mode from client to admin or from admin to client (if the button has been pushed for 5 s or more) or reset the client functionality to the WAITING state (if the button has been pushed between 2 and 3 s and the current execution mode is the client one).
 
   - **Joystick push button:** This interruption is configured in FALLING so that it runs every time the button is pushed and state changes from HIGH to LOW (since it's INPUT_PULLUP). It's the one in charge of 'accepting' some actions:
-    - Choose a coffee to order.
-    - Choose the admin menu functionality.
-    - Confirm the new price when changing a coffee price.
+    - Choose a coffee to order (move from SHOWING_COFFEES to PREPARING_COFFEE).
+    - Choose the admin menu functionality (move from SHOWING_ADMIN_MENU to any of the possible states excepting CHANGING_PRICE).
+    - Confirm the new price when changing a coffee price (move from CHANGING_PRICE to CHANGE_PRICES).
   
     This interruption is only working if the current state is one of the following: SHOWING_COFFEES, CHANGE_PRICES, SHOWING_ADMIN_MENU and CHANGING_PRICE.
 
