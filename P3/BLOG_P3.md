@@ -24,7 +24,7 @@ I have used hardware interruptions for both buttons because they are **asynchron
     - Choose a coffee to order.
     - Choose the admin menu functionality.
     - Confirm the new price when changing a coffee price.
-    
+  
     This interruption is only working when if the current state is one of the following: SHOWING_COFFEES, CHANGE_PRICES, SHOWING_ADMIN_MENU and CHANGING_PRICE.
 
 Both interruptions are not working in the first LOADING state (blinking led), they are configured after.
@@ -33,7 +33,7 @@ Both interruptions are not working in the first LOADING state (blinking led), th
 I have used two threads in my implentation, and so, one thread controller.
   - **blink_thread:** This thread is in charge of turning on and off LED1 during the initial LOADING (blinking) state. It's enabled in the *void setup* and disabled once the LOADING state is completed. It executes every second and changes the state of LED1. Once the LED has change the state of the LED *nblinks * 2* times it disables and the program moves on to the next state.  
 
-  -**temp_hum_thread:** This thread is in charge of 
+  -**temp_hum_thread:** This thread is in charge of updating the values of the temperature and humidity measured by the DHT11 sensor. 
 ## Whatchdog
 
 ## Difficulties:
