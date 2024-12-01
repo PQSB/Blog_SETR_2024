@@ -80,4 +80,4 @@ While developing the exercise I found some difficulties:
 
   - Remove button bounces.
 
-  - Regulating the joystick sensibility so that the navigation was comfortable.
+  - Regulating the joystick sensibility so that the navigation is comfortable.
