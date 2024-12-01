@@ -39,7 +39,7 @@ My implementation is based on a **state machine**, whose possible states depend 
     
     - **CHANGING_PRICE:** This state allows the client to modify the price of the coffee chosen in the preivous state (CHANGE_PRICES) by moving the joystick up and down. Each time the price increases (up) or decreases in **0.05€**. Furthermore, the minimum allowable cost is 0€, negative values are not allowed. To confirm the new price, the client has to push the joystick button.
 
-By the way, to facilitate the navigation through all the available coffees and admin functionalities, I created the Cafe and the Admin_menu_function structs, so that it's easier to access information relating to each of them. Furthermore, I used the utils files to try to encapsulate as much code as possible outside the main.ino file.
+By the way, to facilitate the navigation through all the available coffees and admin functionalities, I created the Cafe and the Admin_menu_function structs, so that it's easier to access information related to each of them. Furthermore, I used the utils files to try to encapsulate as much code as possible outside the main.ino file.
 
 ## Interruptions
 I have used hardware interruptions for both buttons because they are **asynchronous** and so, they are the best option to get the required functionality for both buttons. Each interruption has different tasks:
