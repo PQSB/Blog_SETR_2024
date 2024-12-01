@@ -6,7 +6,7 @@
 
 **Circuit schematic:** https://urjc-my.sharepoint.com/:b:/g/personal/a_galea_2022_alumnos_urjc_es/EeKfaghQZJNEh9Fact-LfDUB6V8HPvq2MPstDVrqdJnr0A?e=qFgLAv
 
-**Execution video:**
+**Execution video:** https://urjc-my.sharepoint.com/:v:/g/personal/a_galea_2022_alumnos_urjc_es/EXY6bgORRXRKpJ4_dK7zghAB-Fj2sKpwh2Czl9uA_WApuA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=jCiJXE
 
 ## Implementation details:
 My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode. Each state is described below:
