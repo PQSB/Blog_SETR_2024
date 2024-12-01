@@ -9,7 +9,10 @@
 **Execution video:**
 
 ## Implementation details:
-My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode.
+My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode. Each state is described below:
+  - d
+  -
+  -
 
 ### Key states:
 
@@ -27,7 +30,10 @@ I have used hardware interruptions for both buttons because they are **asynchron
 Both interruptions are not working in the first LOADING state (blinking led), they are configured after.
 
 ## Threads
+I have used two threads in my implentation, and so, one thread controller.
+  - **blink_thread:** This thread is in charge of turning on and off LED1 during the initial LOADING (blinking) state. It's enabled in the *void setup* and disabled once the LOADING state is completed. It executes every second and changes the state of LED1. Once the LED has change the state of the LED *nblinks * 2* times it disables and the program moves on to the next state.  
 
+  -**temp_hum_thread:** This thread is in charge of 
 ## Whatchdog
 
 ## Difficulties:
