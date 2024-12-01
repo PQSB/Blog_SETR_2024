@@ -20,7 +20,7 @@ My implementation is based on a **state machine**, whose possible states depend 
 
     - SHOWING_COFFEES: This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
 
-    - PREPARING_COFFEE: This state displays *Preparando Cafe...* and turns on a LED whose intensity depends (turned on using pwm) on the time remaining for the state to end, which will be randomly chosen between 4s and 8s.
+    - PREPARING_COFFEE: This state displays *Preparando Cafe...* and turns on a LED2, whose intensity depends (turned on using pwm) on the time remaining for the state to end, which will be randomly chosen between 4s and 8s.
 
     - COFFEE_READY: This state displays *RETIRE BEBIDA* for 3s.
     
@@ -35,9 +35,9 @@ My implementation is based on a **state machine**, whose possible states depend 
     
     - WATCH_COUNTER: This state displays the time passed since the board was turned on in seconds.
     
-    - CHANGE_PRICES:
+    - CHANGE_PRICES: This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
     
-    - CHANGING_PRICE:
+    - CHANGING_PRICE: This state allows the client to modify the price of the coffee chosen in the preivous state (CHANGE_PRICES) by moving the joystick up and down. Each time the price increases (up) or decreases in **0.05€**. Furthermore, the minimum allowable cost is 0€, negative values are not allowed. To confirm the new price, the client has to push the joystick button.
 
 ## Interruptions
 I have used hardware interruptions for both buttons because they are **asynchronous** and so, they are the best option to get the required functionality for both buttons. Each interruption has different tasks:
