@@ -11,33 +11,35 @@
 ## Implementation details:
 My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode. Each state is described below:
   - Initial state:
-    - LOADING: This state displays *CARGANDO* and adds a dot to the display every second until 3 blinks of 1s interval are completed.
+    - **LOADING:** This state displays *CARGANDO* and adds a dot to the display every second until 3 blinks of 1s interval are completed.
   
   - Client states:
-    - WAITING: This state displays *ESPERANDO CLIENTE* until the ultrasonic sensor detects an user closer than 1m.
+    - **WAITING:** This state displays *ESPERANDO CLIENTE* until the ultrasonic sensor detects an user closer than 1m.
 
-    - SHOWING_SENSORS: This state displays during 5s the values for temperature and humidity.
+    - **SHOWING_SENSORS:** This state displays during 5s the values for temperature and humidity.
 
-    - SHOWING_COFFEES: This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
+    - **SHOWING_COFFEES:** This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
 
-    - PREPARING_COFFEE: This state displays *Preparando Cafe...* and turns on a LED2, whose intensity depends (turned on using pwm) on the time remaining for the state to end, which will be randomly chosen between 4s and 8s.
+    - **PREPARING_COFFEE:** This state displays *Preparando Cafe...* and turns on a LED2, whose intensity depends (turned on using pwm) on the time remaining for the state to end, which will be randomly chosen between 4s and 8s.
 
-    - COFFEE_READY: This state displays *RETIRE BEBIDA* for 3s.
+    - **COFFEE_READY:** This state displays *RETIRE BEBIDA* for 3s.
     
   - Admin states
-    - SHOWING_ADMIN_MENU: This state allows the client to navigate along all the available admin functionalities displaying the current functionality until the client pushes the josytick button to select one.
+    - **SHOWING_ADMIN_MENU:** This state allows the client to navigate along all the available admin functionalities displaying the current functionality until the client pushes the josytick button to select one.
   
     In the following states, the user can go back to the previous state moving the joystick to the left direction.
     
-    - WATCH_TEMP_HUM: This state displays the temperature and humidity values.
+    - **WATCH_TEMP_HUM:** This state displays the temperature and humidity values.
 
-    - WATCH_DIST: This state displays the distance measured by the ultrasonic sensor.
+    - **WATCH_DIST:** This state displays the distance measured by the ultrasonic sensor.
     
-    - WATCH_COUNTER: This state displays the time passed since the board was turned on in seconds.
+    - **WATCH_COUNTER:** This state displays the time passed since the board was turned on in seconds.
     
-    - CHANGE_PRICES: This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
+    - **CHANGE_PRICES:** This state allows the client to navigate along all the available coffees displaying the current coffee until the client pushes the josytick button to select one.
     
-    - CHANGING_PRICE: This state allows the client to modify the price of the coffee chosen in the preivous state (CHANGE_PRICES) by moving the joystick up and down. Each time the price increases (up) or decreases in **0.05€**. Furthermore, the minimum allowable cost is 0€, negative values are not allowed. To confirm the new price, the client has to push the joystick button.
+    - **CHANGING_PRICE:** This state allows the client to modify the price of the coffee chosen in the preivous state (CHANGE_PRICES) by moving the joystick up and down. Each time the price increases (up) or decreases in **0.05€**. Furthermore, the minimum allowable cost is 0€, negative values are not allowed. To confirm the new price, the client has to push the joystick button.
+
+For my implementation I decided to 
 
 ## Interruptions
 I have used hardware interruptions for both buttons because they are **asynchronous** and so, they are the best option to get the required functionality for both buttons. Each interruption has different tasks:
@@ -67,4 +69,9 @@ I decided to use the whatchdog to avoid blocking during execution. It's initiali
 
 ## Difficulties:
 
-While developing the algorithm I found some difficulties:
+While developing the exercise I found some difficulties:
+
+  - Controlling when it's neccessary to clear the screen and to print new data, since at the begining y was clearing the screen in every iteration, which was inefficient, inconvenient and forced me to have a small delay at the end of the void loop. To solve this I tried to:
+  - Modify some functions re-distributing the location of the lcd.print.
+  
+  - 
