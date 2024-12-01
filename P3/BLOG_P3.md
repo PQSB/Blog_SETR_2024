@@ -60,7 +60,7 @@ I have used two threads in my implentation, and so, one thread controller.
 
   - **temp_hum_thread:** This thread is in charge of updating the values of the temperature and humidity measured by the DHT11 sensor. It's disabled until LOADING state ends since temperature and humidity values are not relevant during this period. Once it's enabled it executes every second and it updates the temperature and humidity values. Will remain enabled from the first time it is enabled.
 
-I decided to use **blink_thread** to have more freedom during the LOADING state and be able to add an extra functionality in this state that displays adds a dot to the 'CARGANDO' display every second.
+I decided to use **blink_thread** to have more freedom during the LOADING state and be able to add an extra functionality in this state that adds a dot to the 'CARGANDO' display every second.
 
 On the other hand, I decided to use **temp_hum_thread** to encapsulate this task and control it's execution period since these values do not need to be updated continuously.
 
@@ -72,6 +72,10 @@ I decided to use the whatchdog to avoid blocking during execution. It's initiali
 While developing the exercise I found some difficulties:
 
   - Controlling when it's neccessary to clear the screen and to print new data, since at the begining y was clearing the screen in every iteration, which was inefficient, inconvenient and forced me to have a small delay at the end of the void loop. To solve this I tried to:
-  - Modify some functions re-distributing the location of the lcd.print.
+    - Modify some functions re-distributing the location of the lcd.print.
+
+    - Add the **reset_for_display()** function previously described.
   
-  - 
+  - Remove button bounces.
+
+  - Regulating the joystick sensibility so that the navigation was comfortable.
