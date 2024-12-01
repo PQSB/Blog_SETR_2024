@@ -12,21 +12,10 @@
 My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode.
 
 ### Key states:
-  - **SPIRAL_MOTION:** The robot follows a spiral pattern, so that, at the begining it covers the greatest area possible.
-
-  - **MOVING_BACKWARD:** When the bumper detects a collision (on the left, right or front), the robot moves backward for a set amount of time. This gives it some space to avoid the obstacle detected.
-  
-  - **TURNING:** After moving backward, the robot turns in the direction set by the bumper zone that detected the obstacle. Moreover, depending on the laser measures at 0º, 90º and 180º it decides whether it's too close to a wall or obstacle. Depending on those meausres there are two possible turn types:
-       - Normal turn: If it has enough space in front and around the robot, it performs a normal turn with random parameters.
-       - Wall turn: If it is too close to a wall or obstacle it turns at a smaller angular speed to try to follow the wall or to go around the obstacle.
-         
-      To avoid getting stuck if the robot detects that the wall turn type has been used more times than the maximum established, it makes a big turn.
-  
-  - **MOVING_FORWARD:** After the turn, the robot moves forward with a constant linear speed until the bumper is hit. Furthermore, if the robot detects that the turn direction has been the same more times than the maximum established, it adds a constant angular speed until another turn direction is choosen.
 
 ## Interruptions
 I have used interruptions for both buttons:
-  - **Push button:** This interruption is configured in CHANGE so that it runs every the button changes from HIGH to LOW or LOW to HIGH. This interruption is the one in charge of updating the execution mode (if the button has been pushed for 5 s or more) 
+  - **Push button:** This interruption is configured in CHANGE so that it runs every the button changes from HIGH to LOW or LOW to HIGH. It's the one in charge of updating the execution mode from client to admin or from admin to client (if the button has been pushed for 5 s or more) or reset the client functionality to the WAITING state (if the button has been pushed between 2 and 3 s and the current execution mode is the client one).
 
   - **Joystick push button:** 
 
