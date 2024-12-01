@@ -11,7 +11,7 @@
 ## Implementation details:
 My implementation is based on a **state machine**, whose possible states depend on the two modes of operation, **CLIENT** mode and **ADMIN** mode. Each state is described below:
   - Initial state:
-    - LOADING
+    - LOADING: This state displays *CARGANDO* and adds a dot to the display every second until 3 blinks of 1s interval are completed.
   
   - Client states:
     - WAITING: This state displays *ESPERANDO CLIENTE* until the ultrasonic sensor detects an user closer than 1m.
