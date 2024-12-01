@@ -25,7 +25,7 @@ I have used hardware interruptions for both buttons because they are **asynchron
     - Choose the admin menu functionality.
     - Confirm the new price when changing a coffee price.
   
-    This interruption is only working when if the current state is one of the following: SHOWING_COFFEES, CHANGE_PRICES, SHOWING_ADMIN_MENU and CHANGING_PRICE.
+    This interruption is only working if the current state is one of the following: SHOWING_COFFEES, CHANGE_PRICES, SHOWING_ADMIN_MENU and CHANGING_PRICE.
 
 Both interruptions are not working in the first LOADING state (blinking led), they are configured after.
 
@@ -40,6 +40,7 @@ I decided to use **blink_thread** to have more freedom during the LOADING state 
 On the other hand, I decided to use **temp_hum_thread** to encapsulate this task and control it's execution period since these values do not need to be updated continuously.
 
 ## Whatchdog
+I decided to use the whatchdog to avoid blocking during execution. It's initialised in the setup and reset in the last line of the void loop. The established time for watchdog is **2s**.
 
 ## Difficulties:
 
