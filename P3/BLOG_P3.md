@@ -35,16 +35,12 @@ I have used two threads in my implentation, and so, one thread controller.
 
   -**temp_hum_thread:** This thread is in charge of updating the values of the temperature and humidity measured by the DHT11 sensor. It's disabled until LOADING state ends, since temperature and humidity values are not relevant during this period. Once it's enabled it executes every second and it updates the temperature and humidity values. Will remain enabled from the first time it is enabled.
 
-I decided to use **blink_thread:** to have more freedom of operation during the LOADING state and to take advantage of the fact that while it appears loading on the screen, ellipsis dots are added every second.
+I decided to use **blink_thread** to have more freedom during the LOADING state and be able to add an extra functionality in this state that displays adds a dot to the 'CARGANDO' display every second.
+
+On the other hand, I decided to use **temp_hum_thread** to encapsulate this task and control it's execution period since these values do not need to be updated continuously.
+
 ## Whatchdog
 
 ## Difficulties:
 
 While developing the algorithm I found some difficulties:
-  - The robot getting stuck in certain places of the map. I try to solve it by including conditions that check if the robot has been a lot of time close to the wall.
-  
-  - The robot being unable to get out of rooms with hard access, I try to solve it by adding angular speed to the movement while following the wall so that it makes easier for the robot to rotate himself the correct way to make his way out of the room.
-  
-  - The robot not convering enough sapce of the house. To solve this I try to find a solution that combines some random elements with some established elements, such as having established turn directions depending on the bumper zone hit but turning during a random period of time (in the normal case).
-
-  - Not being able to make the robot turn a concrete angle as long as the robot turns must be calculated by substraction of times. To solve this I decided to get the laser data only of three concrete angles and to make the turns based more on the bumper that on the laser sensor. Using the laser sensor only to estimate the freedom of the area around the robot.
