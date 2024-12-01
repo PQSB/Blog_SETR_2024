@@ -39,7 +39,7 @@ My implementation is based on a **state machine**, whose possible states depend 
     
     - **CHANGING_PRICE:** This state allows the client to modify the price of the coffee chosen in the preivous state (CHANGE_PRICES) by moving the joystick up and down. Each time the price increases (up) or decreases in **0.05€**. Furthermore, the minimum allowable cost is 0€, negative values are not allowed. To confirm the new price, the client has to push the joystick button.
 
-### Important facts
+By the way, to facilitate the navigation through all the available coffees and admin functionalities, I created the Cafe and the Admin_menu_function structs, so that it's easier to access information relating to each of them.
 
 ## Interruptions
 I have used hardware interruptions for both buttons because they are **asynchronous** and so, they are the best option to get the required functionality for both buttons. Each interruption has different tasks:
@@ -71,10 +71,12 @@ I decided to use the whatchdog to avoid blocking during execution. It's initiali
 
 While developing the exercise I found some difficulties:
 
-  - Controlling when it's neccessary to clear the screen and to print new data, since at the begining y was clearing the screen in every iteration, which was inefficient, inconvenient and forced me to have a small delay at the end of the void loop. To solve this I tried to:
+  - Controlling when it's neccessary to clear the screen and to print new data, since at the begining y was clearing the screen in every iteration, which was inefficient, inconvenient and forced me to have a small delay at the end of the void loop. To solve this I did the following upgrades:
     - Modify some functions re-distributing the location of the lcd.print.
 
-    - Add the **reset_for_display()** function. This function sets the value of the **display** variable, which is used to know when to clear the screen and print new data in the complex display functions **display_coffee, display_admin_menu and change_coffee_price**, to true. So by calling this function in the correct places of the code, the lcd clears the screen only when there is new data to show. So that, this function will appear in concrete places of the code in the file main.ino.
+    - Adding specific execution time intervals to some functions.
+
+    - Add the **reset_for_display()** function. This function sets the value of the **display** variable, which is used to know when to clear the screen and print new data in the complex display functions **display_coffee, display_admin_menu and change_coffee_price**, to true. So by calling this function in the correct places of the code, the lcd clears the screen only when there is new data to show. So that, this function will appear in concrete places of the code in the file main.ino. Furthermure, in the utils.cpp file, the **display** variable is directly modified when neccessary.
 
   - Remove button bounces.
 
